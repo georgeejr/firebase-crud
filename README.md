@@ -41,17 +41,17 @@ it easier to serve the files by a webserver.*
 
 ``` 
 bower install angularfire#1.2.0
-
+``` 
 * firebase 2.4.2 is required by angularfire#1.2.0 version
 
 ```
 bower install angular-material
-
+``` 
 * angular material repository - https://github.com/angular/material
 
 ```
 bower install angular-material-data-table --save
-
+``` 
 * angular material data table repository - https://github.com/daniel-nagy/md-data-table
 
 
