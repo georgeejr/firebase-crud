@@ -1,0 +1,95 @@
+<md-content class="md-padding" ng-controller="homeCtrl">
+    <div layout-gt-xs="row" ng-cloak layout-fill>
+
+        <section layout="column" flex-gt-xs="40" layout-padding layout-margin>
+            <md-card ng-show="addFormShow">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Add Contact</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <form ng-submit="addContact()">
+
+                        <md-input-container class="md-block">
+                            <label>Name</label>
+                            <input ng-model="name" required>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Email</label>
+                            <input ng-model="email" required>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Phone</label>
+                            <input ng-model="phone" required>
+                        </md-input-container>
+                        <button class="md-button md-raised" type="submit">Submit</button>
+                    </form>
+                </md-card-content>
+            </md-card>
+            <md-card ng-show="editFormShow">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Edit Contact</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <form ng-submit="updateContact()">
+
+                        <md-input-container class="md-block">
+                            <label>Name</label>
+                            <input ng-model="name" required>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Email</label>
+                            <input ng-model="email" required>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Phone</label>
+                            <input ng-model="phone" required>
+                        </md-input-container>
+                        <button class="md-button md-raised" type="submit">Submit</button>
+                    </form>
+                </md-card-content>
+            </md-card>
+        </section>
+
+        <section layout="column" flex-gt-xs="60" layout-padding layout-margin>
+            <md-card>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Contacts</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <md-table-container>
+                        <table md-table md-progress="promise">
+                            <thead md-head md-order="query.order" md-on-reorder="getContacts">
+                                <tr md-row>
+                                    <th md-column md-order-by="nameToLower"><span>Name</span></th>
+                                    <th md-column>Email</th>
+                                    <th md-column>Phone</th>
+                                    <th md-column></th>
+                                </tr>
+                            </thead>
+                            <tbody md-body>
+                                <tr md-row md-select="contact" md-select-id="name" md-auto-select ng-repeat="contact in contacts">
+                                    <td md-cell>{{contact.name}}</td>
+                                    <td md-cell>{{contact.email}}</td> 
+                                    <td md-cell>{{contact.phone}}</td>  
+                                    <td md-cell>
+                                        <a href="" class="md-padding" ng-click="showContact(contact)"><i class="material-icons">mode_edit</i></a>
+                                        <a href="" class="md-padding" ng-click="deleteContact(contact)"><i class="material-icons">delete</i></a>
+                                    </td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </md-table-container>
+
+                    <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination>
+                </md-card-content>
+            </md-card>
+        </section>
+    </div>
+</md-content>
